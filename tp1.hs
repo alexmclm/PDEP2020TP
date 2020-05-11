@@ -87,3 +87,16 @@ pagarAAccionista unaPersona | tieneTactica "accionista" unaPersona = restarDiner
 
 restarDineral :: Int -> Persona -> Persona
 restarDineral unDinero unaPersona = unaPersona { dinero = dinero unaPersona - unDinero}
+
+
+--dineroTotal :: Persona -> Persona
+concatenarAcciones unaPersona =  foldl1 (.) (acciones unaPersona) unaPersona
+
+-- devuelve las acciones de tipo lista de una persona 
+--ultimaRumba unaPersona = (acciones.concatenarAcciones) unaPersona
+
+--juegoFinal unaPersona = map (dinero unaPersona) (ultimaRumba unaPersona) unaPersona
+dineroTotal unaPersona = (dinero.concatenarAcciones) unaPersona
+
+juegoFinal unaPersona otraPersona | dineroTotal unaPersona < dineroTotal otraPersona  = otraPersona
+                                  | otherwise =  unaPersona
