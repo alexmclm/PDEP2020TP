@@ -88,6 +88,12 @@ pagarAAccionista unaPersona | tieneTactica "accionista" unaPersona = restarDiner
 restarDineral :: Int -> Persona -> Persona
 restarDineral unDinero unaPersona = unaPersona { dinero = dinero unaPersona - unDinero}
 
+hacerBerrinchePor unaPropiedad unaPersona | alcanzaDinero unaPropiedad unaPersona  = comprarPropiedad unaPropiedad unaPersona
+                                          | otherwise  = id unaPersona
+
+alcanzaDinero unaPropiedad unaPersona = propiedadPrecio unaPropiedad <= dinero unaPersona
+
+comprarPropiedad unaPropiedad unaPersona = (agregarAdquisicion unaPropiedad . gritar) unaPersona
 
 --dineroTotal :: Persona -> Persona
 concatenarAcciones unaPersona =  foldl1 (.) (acciones unaPersona) unaPersona
