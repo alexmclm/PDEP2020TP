@@ -104,5 +104,5 @@ concatenarAcciones unaPersona =  foldl1 (.) (acciones unaPersona) unaPersona
 --juegoFinal unaPersona = map (dinero unaPersona) (ultimaRumba unaPersona) unaPersona
 dineroTotal unaPersona = (dinero.concatenarAcciones) unaPersona
 
-juegoFinal unaPersona otraPersona | dineroTotal unaPersona < dineroTotal otraPersona  = otraPersona
-                                  | otherwise =  unaPersona
+juegoFinal unaPersona otraPersona | dineroTotal unaPersona < dineroTotal otraPersona  = concatenarAcciones otraPersona
+                                  | otherwise =  concatenarAcciones unaPersona
