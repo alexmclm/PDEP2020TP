@@ -115,7 +115,7 @@ restarDineral :: Int -> Persona -> Persona
 restarDineral unDinero unaPersona = unaPersona { dinero = dinero unaPersona - unDinero}
 
 hacerBerrinchePor unaPropiedad unaPersona | alcanzaDinero unaPropiedad unaPersona  = comprarPropiedad unaPropiedad unaPersona
-                                          | otherwise  = hacerBerrinchePor unaPropiedad unaPersona
+                                          | otherwise  = ((hacerBerrinchePor unaPropiedad). modificarDinero (+10)) unaPersona
 
 alcanzaDinero unaPropiedad unaPersona = propiedadPrecio unaPropiedad <= dinero unaPersona
 
